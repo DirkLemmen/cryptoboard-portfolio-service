@@ -1,0 +1,26 @@
+language: java
+jdk:
+  - openjdk16
+services:
+  - docker
+before_install:
+- chmod +x mvnw
+addons:
+  sonarcloud:
+    organization: "dirklemmen"
+    token: ${SONAR_TOKEN} # encrypted value of your token
+jobs:
+  include:
+    - stage: code_quality_check
+      script:
+        - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=DirkLemmen_cryptoboard-portfolio-service
+    - stage: build_java_package
+      script:
+        - mvn clean package
+
+    - stage: build_docker
+      script:
+        - docker build -f Dockerfile -t cryptoboard-portfolio-service:latest .
+        - echo "$DOCKER_HUB_ACCESS_TOKEN" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
+        - docker tag cryptoboard-portfolio-service "$DOCKER_HUB_USERNAME"/cryptoboard-portfolio-service
+        - docker push "$DOCKER_HUB_USERNAME"/cryptoboard-portfolio-service
