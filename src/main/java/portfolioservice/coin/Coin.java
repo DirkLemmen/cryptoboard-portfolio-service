@@ -25,6 +25,13 @@ public class Coin {
     public Coin() {
     }
 
+    public Coin(Float amount, String name, String symbol, String uid) {
+        this.amount = amount;
+        this.name = name;
+        this.symbol = symbol;
+        this.uid = uid;
+    }
+
     public Coin(Long id, Float amount, String name, String symbol, String uid) {
         this.id = id;
         this.amount = amount;
