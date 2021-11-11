@@ -60,9 +60,4 @@ class PortfolioServiceUnitTest {
                 .isInstanceOf(ApiRequestException.class)
                 .hasMessageContaining("There are no coins found");
     }
-
-    @Test
-    void GetCoinWorth() throws IOException {
-        underTest.GetCoinWorth();
-    }
 }

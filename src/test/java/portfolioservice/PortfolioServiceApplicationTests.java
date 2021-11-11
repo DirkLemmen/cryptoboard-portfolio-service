@@ -8,8 +8,6 @@ import portfolioservice.portfolio.PortfolioController;
 @SpringBootTest
 class PortfolioServiceApplicationTests {
 
-    @Autowired
-    private PortfolioController portfolioController;
 
     @Test
     public void contextLoads() {
