@@ -3,7 +3,7 @@ package portfolioservice.portfolio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import portfolioservice.coin.Coin;
+import portfolioservice.coin.PortfolioCoin;
 
 import java.util.List;
 
@@ -20,8 +20,12 @@ public class PortfolioController {
     }
 
     @GetMapping(path = "{userId}")
-    public List<Coin>  GetPortfolio(@PathVariable("userId") String userId)
-    {
-        return portfolioService.GetCoinsInPortfolio(userId);
+    public List<PortfolioCoin>  GetPortfolio(@PathVariable("userId") String uid) throws Exception {
+        return portfolioService.GetCoinsInPortfolio(uid);
     }
+
+//    @DeleteMapping(path = "/{userId}/{coinId}")
+//    public void DeleteCoinFromPortfolio(@PathVariable("userId") String uid, @PathVariable("coinId") Long coinId) {
+//        portfolioService.DeleteCoinFromPortfolio(uid, coinId);
+//    }
 }

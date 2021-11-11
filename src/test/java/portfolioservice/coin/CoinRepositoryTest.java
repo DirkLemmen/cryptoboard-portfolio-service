@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 class CoinRepositoryTest {
@@ -22,7 +21,7 @@ class CoinRepositoryTest {
     @Test
     void findByUid() {
         // given
-        Coin coin = new Coin(
+        PortfolioCoin coin = new PortfolioCoin(
                 5.5f,
                 "bitcoin",
                 "btc",

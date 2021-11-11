@@ -1,82 +1,39 @@
 package portfolioservice.coin;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity
-@Table
+import java.util.Date;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+
 public class Coin {
-    @Id
-    @SequenceGenerator(
-            name = "coin_sequence",
-            sequenceName = "coin_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "coin_sequence"
-    )
-
-    private Long id;
-    private Float amount;
-    private String name;
-    private String symbol;
-    private String uid;
+    public String id;
+    public String symbol;
+    public String image;
+    public double current_price;
+    public Object market_cap;
+    public int market_cap_rank;
+    public long fully_diluted_valuation;
+    public Object total_volume;
+    public double high_24h;
+    public double low_24h;
+    public double price_change_24h;
+    public double price_change_percentage_24h;
+    public double market_cap_change_24h;
+    public double market_cap_change_percentage_24h;
+    public double circulating_supply;
+    public double total_supply;
+    public double max_supply;
+    public double ath;
+    public double ath_change_percentage;
+    public Date ath_date;
+    public double atl;
+    public double atl_change_percentage;
+    public Date atl_date;
+    public Date last_updated;
 
     public Coin() {
     }
 
-    public Coin(Float amount, String name, String symbol, String uid) {
-        this.amount = amount;
-        this.name = name;
-        this.symbol = symbol;
-        this.uid = uid;
-    }
 
-    public Coin(Long id, Float amount, String name, String symbol, String uid) {
-        this.id = id;
-        this.amount = amount;
-        this.name = name;
-        this.symbol = symbol;
-        this.uid = uid;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public Float getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Float amount) {
-        this.amount = amount;
-    }
 }
