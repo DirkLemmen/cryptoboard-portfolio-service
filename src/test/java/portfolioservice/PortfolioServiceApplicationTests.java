@@ -9,7 +9,7 @@ import portfolioservice.portfolio.PortfolioController;
 class PortfolioServiceApplicationTests {
 
 
-    @Test
-    public void contextLoads() {
-    }
+//    @Test
+//    public void contextLoads() {
+//    }
 }
