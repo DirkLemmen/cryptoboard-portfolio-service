@@ -21,11 +21,11 @@ public class PortfolioController {
 
     @GetMapping(path = "{userId}")
     public List<PortfolioCoin>  GetPortfolio(@PathVariable("userId") String uid) throws Exception {
-        return portfolioService.GetCoinsInPortfolio(uid);
+        return portfolioService.getCoinsInPortfolio(uid);
     }
 
-//    @DeleteMapping(path = "/{userId}/{coinId}")
-//    public void DeleteCoinFromPortfolio(@PathVariable("userId") String uid, @PathVariable("coinId") Long coinId) {
-//        portfolioService.DeleteCoinFromPortfolio(uid, coinId);
-//    }
+    @DeleteMapping(path = "/{userId}/{coinId}")
+    public void DeleteCoinFromPortfolio(@PathVariable("userId") String uid, @PathVariable("coinId") Long coinId) {
+        portfolioService.deleteCoinFromPortfolio(uid, coinId);
+    }
 }

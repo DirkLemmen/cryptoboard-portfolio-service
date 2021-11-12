@@ -49,7 +49,7 @@ public class PortfolioIntegrationTest {
         List<PortfolioCoin> portfolioCoinList = new ArrayList<>();
         portfolioCoinList.add(portfolioCoin);
 
-        when(portfolioService.GetCoinsInPortfolio(uid)).thenReturn(portfolioCoinList);
+        when(portfolioService.getCoinsInPortfolio(uid)).thenReturn(portfolioCoinList);
 
         mockMvc.perform(get("/api/v1/private/portfolio/{uid}", uid))
                 .andDo(print()).andExpect(status().isOk()).andExpect(content().json(convertObjectToJsonString(portfolioCoinList)));
@@ -59,7 +59,7 @@ public class PortfolioIntegrationTest {
     public void shouldReturnExceptionMessage() throws Exception {
         String uid = "ABC123";
 
-        when(portfolioService.GetCoinsInPortfolio(uid)).thenThrow(new ApiRequestException("There are no coins found"));
+        when(portfolioService.getCoinsInPortfolio(uid)).thenThrow(new ApiRequestException("There are no coins found"));
 
         mockMvc.perform(get("/api/v1/private/portfolio/{uid}", uid))
                 .andDo(print()).andExpect(status().is4xxClientError())

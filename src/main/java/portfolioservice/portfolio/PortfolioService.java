@@ -2,9 +2,12 @@ package portfolioservice.portfolio;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nimbusds.jose.shaded.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import portfolioservice.account.Account;
+import portfolioservice.account.AccountRepository;
 import portfolioservice.coin.PortfolioCoin;
 import portfolioservice.coin.CoinRepository;
 import portfolioservice.coin.SelectedCoin;
@@ -13,19 +16,23 @@ import portfolioservice.exception.ApiRequestException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PortfolioService {
 
     private final CoinRepository coinRepository;
+    private final AccountRepository accountRepository;
 
     @Autowired
-    public PortfolioService(CoinRepository coinRepository) {
+    public PortfolioService(CoinRepository coinRepository, AccountRepository accountRepository) {
         this.coinRepository = coinRepository;
+        this.accountRepository = accountRepository;
     }
 
-    public List<PortfolioCoin> GetCoinsInPortfolio(String uid) throws Exception {
+    public List<PortfolioCoin> getCoinsInPortfolio(String uid) throws Exception {
         if (coinRepository.countByUid(uid) == 0)
         {
             throw new ApiRequestException("There are no coins found");
@@ -35,39 +42,50 @@ public class PortfolioService {
         }
     }
 
-    public void SaveCoinInPortfolio(PortfolioCoin coin) {
+    public void saveCoinInPortfolio(PortfolioCoin coin) {
         coinRepository.save(coin);
     }
 
-//    public void DeleteCoinFromPortfolio(String uid, Long id) {
-//        // Check if coin exists
-//        Optional<PortfolioCoin> coin = coinRepository.findById(id);
-//        if (coin.isPresent()) {
-//            // Add value to account credit
-//                // Calculate worth
-//                    // Get actual worth
-//                    // Amount x Worth
-//            float amount = coinRepository.getById(id).getAmount();
-////            float worth =
-////            double credit =  x 1;
-//                    // Add to account credit
-//            // Delete coin from portfolio
-//            coinRepository.deleteById(id);
-//        }
-//        else {
-//            throw new IllegalStateException("Coin does not exist");
-//        }
-//    }
+    public void deleteCoinFromPortfolio(String uid, Long id) {
+        // Check if coin exists in portfolio
+        Optional<PortfolioCoin> coin = coinRepository.findById(id);
+        if (coin.isPresent()) {
+            // Calculate credit
+            double amount = coin.get().getAmount();
+            double value = getCoinValue(coin.get().getCoinId());
+            double credit = amount * value;
+            // Add to account credit
+            Optional<Account> optionalAccount = accountRepository.findByUid(uid);
+            if (optionalAccount.isPresent())
+            {
+                Account account = optionalAccount.get();
+                account.setCredit(credit);
+                accountRepository.save(account);
 
-    public void GetCoinWorth() throws IOException {
+                // Delete coin from portfolio
+                coinRepository.deleteById(id);
+            }
+            else
+            {
+                throw new ApiRequestException("Couldn't find account belonging to " + uid);
+            }
+        }
+        else {
+            throw new IllegalStateException("Coin "+id+" does not exist");
+        }
+    }
+
+    public double getCoinValue(String coin) {
         RestTemplate restTemplate = new RestTemplate();
 
-        ObjectMapper objectMapper = new ObjectMapper();
+        String currency = "eur";
 
-        String uri = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur";
-        Object response = restTemplate.getForObject(uri, Object.class);
+        String uri = "https://api.coingecko.com/api/v3/simple/price?ids="+coin+"&vs_currencies=" + currency;
+        LinkedHashMap response = restTemplate.getForObject(uri, LinkedHashMap.class);
+        LinkedHashMap t = (LinkedHashMap) response.get(coin);
 
-        SelectedCoin selectedCoin = objectMapper.readValue(new URL(uri), SelectedCoin.class);
-        System.out.println(response.toString());
+        double value = Double.parseDouble(t.get(currency).toString());
+
+        return value;
     }
 }

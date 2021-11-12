@@ -22,7 +22,13 @@ public class Account {
     public Account() {
     }
 
-    public Account(String uid,double credit ) {
+    public Account(int id, String uid, double credit) {
+        Id = id;
+        this.uid = uid;
+        this.credit = credit;
+    }
+
+    public Account(String uid, double credit ) {
         this.credit = credit;
         this.uid = uid;
     }

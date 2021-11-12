@@ -48,12 +48,20 @@ public class PortfolioCoin {
         this.id = id;
     }
 
-    public String getName() {
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public String getCoinId() {
         return coinId;
     }
 
-    public void setName(String name) {
-        this.coinId = name;
+    public void setCoinId(String coinId) {
+        this.coinId = coinId;
     }
 
     public String getSymbol() {
@@ -70,13 +78,5 @@ public class PortfolioCoin {
 
     public void setUid(String uid) {
         this.uid = uid;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
     }
 }
