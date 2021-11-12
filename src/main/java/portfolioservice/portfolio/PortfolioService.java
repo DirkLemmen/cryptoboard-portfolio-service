@@ -1,8 +1,5 @@
 package portfolioservice.portfolio;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nimbusds.jose.shaded.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -10,12 +7,8 @@ import portfolioservice.account.Account;
 import portfolioservice.account.AccountRepository;
 import portfolioservice.coin.PortfolioCoin;
 import portfolioservice.coin.CoinRepository;
-import portfolioservice.coin.SelectedCoin;
 import portfolioservice.exception.ApiRequestException;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Optional;

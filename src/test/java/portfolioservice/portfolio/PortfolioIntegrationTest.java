@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(PortfolioController.class)
 @AutoConfigureMockMvc(addFilters = false)
-public class PortfolioIntegrationTest {
+class PortfolioIntegrationTest {
 
     @MockBean
     PortfolioService portfolioService;
@@ -43,7 +43,7 @@ public class PortfolioIntegrationTest {
     private MockMvc mockMvc;
 
     @Test
-    public void shouldReturnPortfolio() throws Exception {
+    void shouldReturnPortfolio() throws Exception {
         String uid = "ABC123";
         PortfolioCoin portfolioCoin = new PortfolioCoin(1L, 1, "bitcoin", "btc", uid);
         List<PortfolioCoin> portfolioCoinList = new ArrayList<>();
@@ -56,7 +56,7 @@ public class PortfolioIntegrationTest {
     }
 
     @Test
-    public void shouldReturnExceptionMessage() throws Exception {
+    void shouldReturnExceptionMessage() throws Exception {
         String uid = "ABC123";
 
         when(portfolioService.getCoinsInPortfolio(uid)).thenThrow(new ApiRequestException("There are no coins found"));

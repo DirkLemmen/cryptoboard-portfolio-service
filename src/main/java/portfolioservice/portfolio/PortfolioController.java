@@ -20,12 +20,12 @@ public class PortfolioController {
     }
 
     @GetMapping(path = "{userId}")
-    public List<PortfolioCoin>  GetPortfolio(@PathVariable("userId") String uid) throws Exception {
+    public List<PortfolioCoin>  getPortfolio(@PathVariable("userId") String uid) throws Exception {
         return portfolioService.getCoinsInPortfolio(uid);
     }
 
     @DeleteMapping(path = "/{userId}/{coinId}")
-    public void DeleteCoinFromPortfolio(@PathVariable("userId") String uid, @PathVariable("coinId") Long coinId) {
+    public void deleteCoinFromPortfolio(@PathVariable("userId") String uid, @PathVariable("coinId") Long coinId) {
         portfolioService.deleteCoinFromPortfolio(uid, coinId);
     }
 }
