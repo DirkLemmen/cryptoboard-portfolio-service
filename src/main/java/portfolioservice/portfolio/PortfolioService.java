@@ -82,6 +82,10 @@ public class PortfolioService {
 
         String uri = "https://api.coingecko.com/api/v3/simple/price?ids="+coin+"&vs_currencies=" + currency;
         LinkedHashMap response = restTemplate.getForObject(uri, LinkedHashMap.class);
+        if (response.isEmpty())
+        {
+            throw new ApiRequestException("Couldn't find "+ coin +" value");
+        }
         LinkedHashMap t = (LinkedHashMap) response.get(coin);
 
         double value = Double.parseDouble(t.get(currency).toString());
