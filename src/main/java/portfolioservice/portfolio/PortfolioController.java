@@ -7,7 +7,7 @@ import portfolioservice.coin.PortfolioCoin;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(path = "api/v1/private/portfolio", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PortfolioController {
