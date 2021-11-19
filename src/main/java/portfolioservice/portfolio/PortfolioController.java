@@ -7,7 +7,7 @@ import portfolioservice.coin.PortfolioCoin;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(path = "api/v1/private/portfolio", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PortfolioController {
@@ -20,12 +20,12 @@ public class PortfolioController {
     }
 
     @GetMapping(path = "{userId}")
-    public List<PortfolioCoin>  GetPortfolio(@PathVariable("userId") String uid) throws Exception {
+    public List<PortfolioCoin>  getPortfolio(@PathVariable("userId") String uid) throws Exception {
         return portfolioService.getCoinsInPortfolio(uid);
     }
 
     @DeleteMapping(path = "/{userId}/{coinId}")
-    public void DeleteCoinFromPortfolio(@PathVariable("userId") String uid, @PathVariable("coinId") Long coinId) {
+    public void deleteCoinFromPortfolio(@PathVariable("userId") String uid, @PathVariable("coinId") Long coinId) {
         portfolioService.deleteCoinFromPortfolio(uid, coinId);
     }
 }

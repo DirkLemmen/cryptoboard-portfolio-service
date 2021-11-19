@@ -15,7 +15,7 @@ public class Account {
             strategy = GenerationType.SEQUENCE,
             generator = "account_sequence"
     )
-    private int Id;
+    private int id;
     private String uid;
     private double credit;
 
@@ -23,7 +23,7 @@ public class Account {
     }
 
     public Account(int id, String uid, double credit) {
-        Id = id;
+        this.id = id;
         this.uid = uid;
         this.credit = credit;
     }
