@@ -1,9 +1,7 @@
 D:\Github\CryptoBoard\cryptoboard-portfolio-service\src\main\java\portfolioservice\PortfolioServiceApplication.java
 D:\Github\CryptoBoard\cryptoboard-portfolio-service\src\main\java\portfolioservice\coin\CoinRepository.java
 D:\Github\CryptoBoard\cryptoboard-portfolio-service\src\main\java\portfolioservice\exception\ApiExceptionHandler.java
-D:\Github\CryptoBoard\cryptoboard-portfolio-service\src\main\java\portfolioservice\portfolio\Portfolio.java
 D:\Github\CryptoBoard\cryptoboard-portfolio-service\src\main\java\portfolioservice\coin\Coin.java
-D:\Github\CryptoBoard\cryptoboard-portfolio-service\src\main\java\portfolioservice\coin\SelectedCoinWorth.java
 D:\Github\CryptoBoard\cryptoboard-portfolio-service\src\main\java\portfolioservice\account\Account.java
 D:\Github\CryptoBoard\cryptoboard-portfolio-service\src\main\java\portfolioservice\portfolio\PortfolioService.java
 D:\Github\CryptoBoard\cryptoboard-portfolio-service\src\main\java\portfolioservice\account\AccountRepository.java
@@ -12,5 +10,4 @@ D:\Github\CryptoBoard\cryptoboard-portfolio-service\src\main\java\portfolioservi
 D:\Github\CryptoBoard\cryptoboard-portfolio-service\src\main\java\portfolioservice\coin\PortfolioCoin.java
 D:\Github\CryptoBoard\cryptoboard-portfolio-service\src\main\java\portfolioservice\exception\ApiException.java
 D:\Github\CryptoBoard\cryptoboard-portfolio-service\src\main\java\portfolioservice\exception\ApiRequestException.java
-D:\Github\CryptoBoard\cryptoboard-portfolio-service\src\main\java\portfolioservice\coin\SelectedCoin.java
 D:\Github\CryptoBoard\cryptoboard-portfolio-service\src\main\java\portfolioservice\security\SecurityConfig.java

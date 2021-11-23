@@ -1,16 +1,13 @@
 portfolioservice\account\Account.class
 portfolioservice\portfolio\PortfolioService.class
 portfolioservice\coin\Coin.class
-portfolioservice\portfolio\Portfolio.class
 portfolioservice\coin\CoinRepository.class
 portfolioservice\account\AccountRepository.class
 portfolioservice\portfolio\PortfolioController.class
-portfolioservice\coin\SelectedCoin.class
 portfolioservice\PortfolioServiceApplication.class
 portfolioservice\security\AudienceValidator.class
 portfolioservice\coin\PortfolioCoin.class
 portfolioservice\exception\ApiRequestException.class
 portfolioservice\exception\ApiException.class
 portfolioservice\exception\ApiExceptionHandler.class
-portfolioservice\coin\SelectedCoinWorth.class
 portfolioservice\security\SecurityConfig.class
