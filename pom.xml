@@ -14,7 +14,9 @@
 	<name>portfolio-service</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>16</java.version>
+		<sonar.organization>dirklemmen</sonar.organization>
+  		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -76,19 +78,38 @@
         </dependency>
     </dependencies>
 
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.8.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.8.5</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.22.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>3.9.1.2184</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 	<profiles>
 		<profile>
 			<id>coverage</id>
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>org.springframework.boot</groupId>
-						<artifactId>spring-boot-maven-plugin</artifactId>
-					</plugin>
-					<plugin>
 						<groupId>org.jacoco</groupId>
 						<artifactId>jacoco-maven-plugin</artifactId>
-						<version>0.8.7</version>
 						<executions>
 							<execution>
 								<id>prepare-agent</id>
