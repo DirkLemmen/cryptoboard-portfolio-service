@@ -8,14 +8,8 @@ With this API a registered user can track his crypto portfolio.
 mvn spring-boot:run
 ```
 
-## Endpoints
-With this endpoint all the coins in a portfolio from a specific user is retrieved.
-
-GET: ```api/v1/private/portfolio/{userId}```
-
-With this endpoint a coin is deleted from a portfolio and the value is added to account credit.
-
-DELETE: ```api/v1/private/portfolio/{userId}/{coinId}```
+## API Description
+[![swagger.png](https://i.postimg.cc/SK507b84/swagger.png)](https://postimg.cc/nsvwp50S)
 
 ## Security
 Endpoints are secured and can only be accessed with JWT tokens.
